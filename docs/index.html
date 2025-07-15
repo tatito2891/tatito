@@ -2,32 +2,74 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>tatito.es</title>
+  <title>tatito.es - Retro Machine</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      font-family: sans-serif;
-      background: #f9f9f9;
+      background-color: black;
+      color: #00FF00;
+      font-family: "Courier New", monospace;
       text-align: center;
-      padding: 50px;
+      padding: 20px;
     }
+
     h1 {
-      color: #333;
+      font-size: 2.5em;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px #00ff00;
     }
-    .counter {
-      margin-top: 30px;
+
+    p, .counter {
       font-size: 1.3em;
-      color: #444;
+      margin-bottom: 20px;
     }
+
     .label {
       font-weight: bold;
-      margin-right: 10px;
+      color: #33FF33;
+    }
+
+    .gif {
+      max-width: 250px;
+      margin: 20px auto;
+      display: block;
+    }
+
+    hr {
+      border: 1px dashed #00ff00;
+      width: 80%;
+      margin: 30px auto;
+    }
+
+    .visit-counter {
+      margin-top: 40px;
+    }
+
+    marquee {
+      color: yellow;
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
+
+  <!-- GIF de bienvenida -->
+  <img class="gif" src="https://media.giphy.com/media/xThuWu82QD3pj4wvEQ/giphy.gif" alt="Bienvenida Máquina">
+
   <h1>¡Hola Máquina! 👋</h1>
   <p>Este es el contenido que verás al escanear el tatuaje.</p>
+
+  <!-- Contador de visitas estilo clásico -->
+
+  <div class="visit-counter">
+    <p><span class="label">Contador de visitas:</span></p>
+    <img src="https://www.webfreecounter.com/hit.php?id=geakqnq&nd=6&style=3" alt="Contador retro">
+  </div>
+
+  <!-- Contadores -->
 
   <div class="counter">
     <span class="label">Días desde que me hice el tatuaje:</span>
@@ -44,6 +86,15 @@
     <span id="vicky-days"></span>
   </div>
 
+
+
+  <hr>
+
+  <!-- GIF inferior -->
+  <img class="gif" src="https://media.giphy.com/media/T8Dhl1KPyzRqU/giphy.gif" alt="GIF final retro">
+
+  <marquee behavior="scroll" direction="left" scrollamount="5">Gracias por visitar tatito.es — ¡Larga vida al estilo retro! ✨</marquee>
+
   <script>
     function daysSince(dateString) {
       const now = new Date();
@@ -53,15 +104,17 @@
       return diffDays;
     }
 
-    // Fechas importantes (formato ISO: AAAA-MM-DDTHH:mm)
-    const webStartDate = new Date(document.lastModified); // Fecha de publicación
+    // Fechas clave
+    const webStartDate = new Date(document.lastModified);
     const birthDate = "1991-09-28T23:00:00";
     const vickyDate = "2025-04-16T06:35:00";
 
-    // Mostrar contadores
+    // Mostrar días
     document.getElementById("web-days").textContent = daysSince(webStartDate);
     document.getElementById("birth-days").textContent = daysSince(birthDate);
     document.getElementById("vicky-days").textContent = daysSince(vickyDate);
   </script>
+
 </body>
 </html>
+
