@@ -30,4 +30,38 @@
   <p>Este es el contenido que verás al escanear el tatuaje.</p>
 
   <div class="counter">
-    <span class="label">Días desde que me hice la web:</spa
+    <span class="label">Días desde que me hice la web:</span>
+    <span id="web-days"></span>
+  </div>
+
+  <div class="counter">
+    <span class="label">Días desde que nací:</span>
+    <span id="birth-days"></span>
+  </div>
+
+  <div class="counter">
+    <span class="label">Días desde que nació Mini Vicky:</span>
+    <span id="vicky-days"></span>
+  </div>
+
+  <script>
+    function daysSince(dateString) {
+      const now = new Date();
+      const past = new Date(dateString);
+      const diffTime = now - past;
+      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+      return diffDays;
+    }
+
+    // Fechas importantes (formato ISO: AAAA-MM-DDTHH:mm)
+    const webStartDate = new Date(document.lastModified); // Fecha de publicación
+    const birthDate = "1991-09-28T23:00:00";
+    const vickyDate = "2025-04-16T06:35:00";
+
+    // Mostrar contadores
+    document.getElementById("web-days").textContent = daysSince(webStartDate);
+    document.getElementById("birth-days").textContent = daysSince(birthDate);
+    document.getElementById("vicky-days").textContent = daysSince(vickyDate);
+  </script>
+</body>
+</html>
