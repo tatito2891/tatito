@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <title>tatito.es - Retro Machine</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fuente digital estilo BTTF -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+
   <style>
     body {
       background-color: black;
@@ -46,6 +50,19 @@
       margin-top: 40px;
     }
 
+    .digital-counter {
+      font-family: 'Orbitron', monospace;
+      font-size: 2.5em;
+      color: #FF3300;
+      background-color: #000000;
+      padding: 10px 20px;
+      border: 2px solid #FF3300;
+      display: inline-block;
+      letter-spacing: 5px;
+      box-shadow: 0 0 10px #FF3300;
+      margin-top: 10px;
+    }
+
     marquee {
       color: yellow;
       font-weight: bold;
@@ -62,15 +79,13 @@
   <h1>¡Hola Máquina! 👋</h1>
   <p>Este es el contenido que verás al escanear el tatuaje.</p>
 
-  <!-- Contador de visitas estilo clásico -->
-
+  <!-- Contador de visitas falso estilo Regreso al Futuro -->
   <div class="visit-counter">
     <p><span class="label">Contador de visitas:</span></p>
-    <img src="https://hitwebcounter.com/counter/counter.php?page=21162868&style=0001&nbdigits=5&type=page&initCount=0" title="Counter Widget" Alt="Contador de visitas"   border="0" />
+    <div class="digital-counter">00042</div>
   </div>
 
   <!-- Contadores -->
-
   <div class="counter">
     <span class="label">Días desde que me hice el tatuaje:</span>
     <span id="web-days"></span>
@@ -85,8 +100,6 @@
     <span class="label">Días desde que nació Mini Vicky:</span>
     <span id="vicky-days"></span>
   </div>
-
-
 
   <hr>
 
@@ -117,4 +130,3 @@
 
 </body>
 </html>
-
