@@ -5,10 +5,13 @@
   <title>tatito.es - Retro Machine</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Fuente digital estilo BTTF -->
-  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-
+  <!-- Cargar fuente local tipo calculadora -->
   <style>
+    @font-face {
+      font-family: 'Digital7';
+      src: url('fonts/digital-7-mono.ttf') format('truetype');
+    }
+
     body {
       background-color: black;
       color: #00FF00;
@@ -51,18 +54,17 @@
     }
 
     .digital-counter {
-      font-family: 'VT323', monospace;
-      font-size: 2.8em;
+      font-family: 'Digital7', monospace;
+      font-size: 3em;
       color: #FF3300;
       background-color: #000000;
       padding: 10px 20px;
       border: 2px solid #FF3300;
       display: inline-block;
-      letter-spacing: 10px;
+      letter-spacing: 8px;
       box-shadow: 0 0 10px #FF3300;
       margin-top: 10px;
     }
-
 
     marquee {
       color: yellow;
