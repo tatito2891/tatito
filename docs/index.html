@@ -76,28 +76,25 @@
 </head>
 <body>
 
-  <!-- GIF de bienvenida -->
   <img class="gif" src="https://media.giphy.com/media/xThuWu82QD3pj4wvEQ/giphy.gif" alt="Bienvenida Máquina">
 
   <h1>¡Hola Máquina! 👋</h1>
   <p>Este es el contenido que verás al escanear el tatuaje.</p>
 
-  <!-- Contador de visitas falso estilo Regreso al Futuro -->
   <div class="visit-counter">
     <p><span class="label">Contador de visitas:</span></p>
     <div class="digital-counter">00042</div>
   </div>
   <br>
 
-  <!-- Contadores -->
   <div class="counter">
     <span class="label">Días desde que me hice el tatuaje:</span>
     <span id="web-days"></span>
   </div>
 
   <div class="counter">
-    <span class="label">Días desde que nací:</span>
-    <span id="birth-days"></span>
+    <span class="label">Desde que nací:</span>
+    <span id="birth-time"></span>
   </div>
 
   <div class="counter">
@@ -107,7 +104,6 @@
 
   <hr>
 
-  <!-- GIF inferior -->
   <img class="gif" src="https://media.giphy.com/media/T8Dhl1KPyzRqU/giphy.gif" alt="GIF final retro">
 
   <marquee behavior="scroll" direction="left" scrollamount="5">Gracias por visitar tatito.es ✨</marquee>
@@ -117,8 +113,29 @@
       const now = new Date();
       const past = new Date(dateString);
       const diffTime = now - past;
-      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-      return diffDays;
+      return Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    }
+
+    function getAgeDetails(birthDateStr) {
+      const birthDate = new Date(birthDateStr);
+      const today = new Date();
+
+      let years = today.getFullYear() - birthDate.getFullYear();
+      let months = today.getMonth() - birthDate.getMonth();
+      let days = today.getDate() - birthDate.getDate();
+
+      if (days < 0) {
+        months--;
+        const lastMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+        days += lastMonth.getDate();
+      }
+
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+
+      return { years, months, days };
     }
 
     // Fechas clave
@@ -126,10 +143,11 @@
     const birthDate = "1991-09-28T23:00:00";
     const vickyDate = "2025-04-16T06:35:00";
 
-    // Mostrar días
     document.getElementById("web-days").textContent = daysSince(webStartDate);
-    document.getElementById("birth-days").textContent = daysSince(birthDate);
     document.getElementById("vicky-days").textContent = daysSince(vickyDate);
+
+    const age = getAgeDetails(birthDate);
+    document.getElementById("birth-time").textContent = `${age.years} años, ${age.months} meses y ${age.days} días`;
   </script>
 
 </body>
