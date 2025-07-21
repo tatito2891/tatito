@@ -83,7 +83,7 @@
 
   <div class="visit-counter">
     <p><span class="label">Contador de visitas:</span></p>
-    <div class="digital-counter">25498111</div>
+    <div class="digital-counter">000000</div>
   </div>
   <br>
 
@@ -149,6 +149,37 @@
     const age = getAgeDetails(birthDate);
     document.getElementById("birth-time").textContent = `${age.years} años, ${age.months} meses y ${age.days} días`;
   </script>
+  <!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-database-compat.js"></script>
+
+<script>
+  // Configuración de Firebase (reemplaza con la tuya si cambia)
+  const firebaseConfig = {
+    apiKey: "AIzaSyBppv0fi5evKWO5JKL9MTj7iy-pdqo_bFA",
+    authDomain: "tatito-contador.firebaseapp.com",
+    projectId: "tatito-contador",
+    storageBucket: "tatito-contador.firebasestorage.app",
+    messagingSenderId: "728066291945",
+    appId: "1:728066291945:web:59d880f6fddbd8d2549878"
+  };
+
+  // Inicializar Firebase
+  firebase.initializeApp(firebaseConfig);
+  const database = firebase.database();
+  const counterRef = database.ref("visitas");
+
+  // Incrementar el contador
+  counterRef.transaction(current => {
+    return (current || 0) + 1;
+  }).then(result => {
+    const count = result.snapshot.val();
+    document.querySelector(".digital-counter").textContent = String(count).padStart(5, "0");
+  }).catch(err => {
+    console.error("Error actualizando contador:", err);
+  });
+</script>
+
 
 </body>
 </html>
